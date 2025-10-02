@@ -71,7 +71,7 @@ export function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-8" aria-label="Primary">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -86,7 +86,9 @@ export function Navigation() {
           {/* Right Side Actions */}
           <div className="flex items-center space-x-4">
             {/* Connection Status */}
-            <div
+            <div 
+              role="status"
+              aria-live="polite"
               className={`hidden sm:flex items-center space-x-2 px-3 py-1 rounded-full ${
                 isOnline
                   ? "bg-green-100 text-green-700"
@@ -94,9 +96,9 @@ export function Navigation() {
               }`}
             >
               {isOnline ? (
-                <Wifi className="w-4 h-4" />
+                <Wifi className="w-4 h-4" aria-hidden="true" />
               ) : (
-                <WifiOff className="w-4 h-4" />
+                <WifiOff className="w-4 h-4" aria-hidden="true" />
               )}
               <span className="text-sm font-medium">
                 {isOnline ? "Online" : "Offline"}
@@ -106,25 +108,25 @@ export function Navigation() {
             {/* Language Selector */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="hidden sm:flex">
-                  <Globe className="w-4 h-4 mr-2" />
+                <Button variant="ghost" size="sm" className="hidden sm:flex" aria-label="Select language">
+                  <Globe className="w-4 h-4 mr-2" aria-hidden="true" />
                   EN
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuItem>🇬🇧 English</DropdownMenuItem>
-                <DropdownMenuItem>🇫🇷 Français</DropdownMenuItem>
-                <DropdownMenuItem>🇰🇪 Kiswahili</DropdownMenuItem>
-                <DropdownMenuItem>🇳🇬 Hausa</DropdownMenuItem>
-                <DropdownMenuItem>🇿🇦 isiZulu</DropdownMenuItem>
-                <DropdownMenuItem>🇲🇱 Bambara</DropdownMenuItem>
+                <DropdownMenuItem role="menuitem">🇬🇧 English</DropdownMenuItem>
+                <DropdownMenuItem role="menuitem">🇫🇷 Français</DropdownMenuItem>
+                <DropdownMenuItem role="menuitem">🇰🇪 Kiswahili</DropdownMenuItem>
+                <DropdownMenuItem role="menuitem">🇳🇬 Hausa</DropdownMenuItem>
+                <DropdownMenuItem role="menuitem">🇿🇦 isiZulu</DropdownMenuItem>
+                <DropdownMenuItem role="menuitem">🇲🇱 Bambara</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
             {/* Notifications */}
-            <Button variant="ghost" size="sm" className="relative">
-              <Bell className="w-5 h-5" />
-              <Badge className="absolute -top-1 -right-1 w-5 h-5 flex items-center justify-center p-0 bg-red-500 text-white text-xs">
+            <Button variant="ghost" size="sm" className="relative" aria-label="View notifications">
+              <Bell className="w-5 h-5" aria-hidden="true" />
+              <Badge className="absolute -top-1 -right-1 w-5 h-5 flex items-center justify-center p-0 bg-red-500 text-white text-xs" role="status">
                 3
               </Badge>
             </Button>
