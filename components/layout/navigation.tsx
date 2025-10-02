@@ -153,6 +153,7 @@ export function Navigation() {
                 <Button
                   variant="ghost"
                   className="relative h-8 w-8 rounded-full"
+                  aria-label="User account menu"
                 >
                   <Avatar className="h-8 w-8">
                     <Image
@@ -199,12 +200,16 @@ export function Navigation() {
               variant="ghost"
               size="sm"
               className="lg:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={() => setIsMenuOpen(!isMenuOpen)} 
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation"
+
             >
               {isMenuOpen ? (
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5" aria-hidden="true" />
               ) : (
-                <Menu className="w-5 h-5" />
+                <Menu className="w-5 h-5" aria-hidden="true" />
               )}
             </Button>
           </div>
@@ -216,7 +221,10 @@ export function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-t border-emerald-200 py-4"
+            className="lg:hidden border-t border-emerald-200 py-4" 
+            id="mobile-navigation"
+            role="navigation"
+            aria-label="Mobile primary"
           >
             <nav className="flex flex-col space-y-4">
               {navItems.map((item) => (
